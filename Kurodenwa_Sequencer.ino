@@ -41,6 +41,8 @@ float dutyCycle_P = 0.5; //dutyCycle_N = (1-DutyCycle_P)で計算
 long previousMillis = 0;
 bool bellState = true;
 bool pwmLimitationCheckFlg = true;
+
+//sq1_Mode設定
 int RotationTimes = 0;
 int i = 0;
 
