@@ -11,8 +11,6 @@ void receiveSq1Mode()
       alternatelyRotation();
     }
     //      Serial.println("sq1Value==HIGH");
-    //      Serial.print("i=");
-    //      Serial.println(i);
   } else if (sq1Value == LOW) {
     i = 0;
     //    Serial.println("sq1Value==LOW");
