@@ -42,9 +42,10 @@ long previousMillis = 0;
 bool bellState = true;
 bool pwmLimitationCheckFlg = true;
 
-//sq1_Mode設定
-int RotationTimes = 0;
+//SQ1_MODE設定
+int RotationTimes = 1;
 int i = 0;
+int RotationIntervalTime = 10;
 
 
 const long ONE_SECOND = 1000;

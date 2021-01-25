@@ -4,14 +4,14 @@ void receiveSq1Mode()
 
   if (sq1Value == HIGH)
   {
-    for (; i <= RotationTimes; i++) {
+    for (; i < RotationTimes; i++) {  //sq1の1パルスでRotationtimes回ベルを鳴らす
       if (i > 0) {
-        delay(10);
+        delay(RotationIntervalTime);
       }
       alternatelyRotation();
     }
     //      Serial.println("sq1Value==HIGH");
-  } else if (sq1Value == LOW) {
+  } else if (sq1Value == LOW) {  //パルスがLOWに入ると打った回数リセット
     i = 0;
     //    Serial.println("sq1Value==LOW");
   }
@@ -62,24 +62,27 @@ void receiveKeypadPassiveMode() {
   {
     // 「右」が押されたときの処理
     if (localKey == RightKey) {
-      lcdCrearPrint("@Right");
-      freq = 16;
-
+      lcdCrearPrint("@RotIntTime+10");
+      RotationIntervalTime = RotationIntervalTime + 10;
+      lcdRotationIntervalTimePrint();
     }
     // 「左」が押されたときの処理
     if (localKey == LeftKey) {
-      lcdCrearPrint("@alternatelyRot");
-      alternatelyRotation();
+      lcdCrearPrint("@RotIntTime-10");
+      RotationIntervalTime = RotationIntervalTime - 10;
+      lcdRotationIntervalTimePrint();
     }
     // 「上」が押されたときの処理
     if (localKey == UpKey) {
-      lcdCrearPrint("@Up");
+      lcdCrearPrint("@RotationTimes++");
       RotationTimes++;
+      lcdRotationTimesPrint();
     }
     // 「下」が押されたときの処理
     if (localKey == DownKey) {
-      lcdCrearPrint("@Down");
+      lcdCrearPrint("@RotationTimes--");
       RotationTimes--;
+      lcdRotationTimesPrint();
     }
     // 「SELECT」が押されたときの処理
     if (localKey == SelectKey)
