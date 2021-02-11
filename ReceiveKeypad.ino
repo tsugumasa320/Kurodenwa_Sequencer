@@ -103,10 +103,10 @@ void receiveKeypadManualMode() {
     if (localKey == DownKey) {
       lcdCrearPrint("@rinrin");
       freq = 16;
-      pwmController(2000);
-      delay(1000);
-      pwmController(2000);
-      delay(1000);
+      pwmController(1000);
+      delay(2000);
+      pwmController(1000);
+      delay(2000);
 
     }
     // 「SELECT」が押されたときの処理

@@ -1,7 +1,7 @@
 void sq1ModeController() {
   sq1ModeLimitation();
   if (sq1ModeLimitationCheckFlg == true) {
-    receiveSq1Cv();
+//    receiveSq1Cv();
     sq1ModeTimingSwitch();
   }
 }
