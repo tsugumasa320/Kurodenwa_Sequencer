@@ -19,12 +19,12 @@ void lcdRotationTimesPrint()
 {
   lcd.setCursor(0, 1);
   lcd.print("RotTimes:");
-  lcd.print(RotationTimes);
+  lcd.print(rotationTimes);
 }
 
 void lcdRotationIntervalTimePrint() 
 {
   lcd.setCursor(0, 1);
   lcd.print("RotIntTime:");
-  lcd.print(RotationIntervalTime);
+  lcd.print(rotationIntervalTime);
 }

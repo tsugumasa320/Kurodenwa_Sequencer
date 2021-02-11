@@ -1,12 +1,28 @@
-void pwmController() {
+void pwmController(unsigned long settingTime) {
 
-  pwmLimitation();
-  if (pwmLimitationCheckFlg == true) {
-    pwmTimingSwitch();
+  //関数呼出時の秒数を記録
+  unsigned long firstTime = millis();
+
+  if (settingTime > 0) {
+
+    //関数呼出時の秒数+設定値＞現在の秒数になるまでループ
+    for (; firstTime + settingTime > millis();)
+    {
+      pwmLimitation();
+      if (pwmLimitationCheckFlg == true) {
+        pwmTimingSwitch();
+      }
+    }
+  } else if (settingTime == 0) {
+    pwmLimitation();
+    if (pwmLimitationCheckFlg == true) {
+      pwmTimingSwitch();
+    }
   }
 }
 
-void pwmLimitation() {
+void pwmLimitation() { //ベルが壊れないように周波数を制限
+  //  Serial.println("pwmLimitation");
   if (50 > freq && freq > 0 )
   { //周波数0Hz以下と50Hz以上は出力しない
     pwmLimitationCheckFlg = true;
@@ -18,7 +34,7 @@ void pwmLimitation() {
   }
 }
 
-void pwmTimingSwitch()
+void pwmTimingSwitch() //一回打鍵
 {
   unsigned long currentMillis = millis();
   long interval_P = ONE_SECOND / freq * dutyCycle_P ; // ex:1000(ms)/16(Hz)*0.5  = 31.25(ms/Hz)

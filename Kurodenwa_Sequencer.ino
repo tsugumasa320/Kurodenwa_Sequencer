@@ -33,27 +33,39 @@ const int BELL_P_PIN = 2;
 const int BELL_N_PIN = 3;
 
 //--------------------
-// PWM設定
+// 起動時のMode設定
 
 int modeSwitch = 1;
+
+//--------------------
+// PWM設定
+
 int freq = 16;
 float dutyCycle_P = 0.5; //dutyCycle_N = (1-DutyCycle_P)で計算
 long previousMillis = 0;
 bool bellState = true;
 bool pwmLimitationCheckFlg = true;
 
+//--------------------
 //SQ1_MODE設定
-int RotationTimes = 1;
+int sq1GatePin = 13;
+int sq1CvPin = A1;
+int rotationTimes = 1;
 int i = 0;
-int RotationIntervalTime = 10;
-
+int rotationIntervalTime = 10;
+bool sq1ModeLimitationCheckFlg = true;
 
 const long ONE_SECOND = 1000;
 
+//--------------------
+
 void setup()
 {
+  
+  //ピン設定
   pinMode(A0, INPUT);
-  pinMode(13, INPUT_PULLUP);
+  pinMode(sq1CvPin, INPUT);
+  pinMode(sq1GatePin, INPUT_PULLUP);
   pinMode(BELL_N_PIN, OUTPUT);
   pinMode(BELL_P_PIN, OUTPUT);
 
@@ -65,14 +77,13 @@ void setup()
 
 void loop()
 {
-  int buttonValue = analogRead(A0); //LCDKeypadのボタン読み込み
 
   if (modeSwitch == 0) {
     receiveKeypadActiveMode();
-    pwmController();
+    pwmController(0);
   } else if (modeSwitch == 1) {
     receiveKeypadPassiveMode();
-    receiveSq1Mode();
+    sq1ModeController();
   } else if (modeSwitch == 2) {
     receiveKeypadManualMode();
   }

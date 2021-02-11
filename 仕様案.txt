@@ -5,9 +5,9 @@
 
 □Passive Mode
 済・SELECTでモード切り替え
-・上下ボタンで一パルスごとに何回鳴らすかを設定
-・右ボタンで通常の電話呼び出し音
-済⇨消去予定・左ボタンで一回打つ
+済・上下ボタンで一パルスごとに何回鳴らすかを設定
+済・右ボタンでRotationTimeIntevalを+10
+済・左ボタンでRotationTimeIntevalを-10
 
 （SQ1からのアナログ出力から一パルスごとに何回打つか決定する）
 □Manual Mode
@@ -15,4 +15,6 @@
 済・左ボタンでnormalRotation
 済・右ボタンでreverseRotation
 済・上ボタンでベルを鳴らす（正転・反転交互に）
-済・下ボタンでstopRotation
+済・下ボタンで電話呼び出し音
+
+Todo:AnalogReadでCVを読み取って、一回当たりの打鍵回数を設定可能に
