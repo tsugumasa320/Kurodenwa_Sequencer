@@ -52,7 +52,7 @@ int sq1GatePin = 13;
 int sq1CvPin = A1;
 int rotationTimes = 1;
 int i = 0;
-int rotationIntervalTime = 10;
+int rotationIntervalTime = 30;
 bool sq1ModeLimitationCheckFlg = true;
 
 const long ONE_SECOND = 1000;
