@@ -46,27 +46,44 @@ void receiveKeypadPassiveMode() {
   {
     // 「右」が押されたときの処理
     if (localKey == RightKey) {
-      lcdCrearPrint("@RotIntTime+10");
-      rotationIntervalTime = rotationIntervalTime + 10;
-      lcdRotationIntervalTimePrint();
+
+      lcdCrearPrint("@alternatelyRotation");
+      alternatelyRotation();
+
+      //      lcdCrearPrint("@RotationTimes++");
+      //      rotationTimes++;
+      //      lcdRotationTimesPrint();
+
     }
     // 「左」が押されたときの処理
     if (localKey == LeftKey) {
-      lcdCrearPrint("@RotIntTime-10");
-      rotationIntervalTime = rotationIntervalTime - 10;
-      lcdRotationIntervalTimePrint();
+
+      lcdCrearPrint("@rinrin");
+      freq = 16;
+      pwmController(1000);
+      delay(2000);
+      pwmController(1000);
+      delay(2000);
+
+      //      lcdCrearPrint("@RotationTimes--");
+      //      rotationTimes--;
+      //      lcdRotationTimesPrint();
+
     }
     // 「上」が押されたときの処理
     if (localKey == UpKey) {
-      lcdCrearPrint("@RotationTimes++");
-      rotationTimes++;
-      lcdRotationTimesPrint();
+      lcdCrearPrint("@RotIntTime+10");
+      rotationIntervalTime = rotationIntervalTime + 10;
+      lcdRotationIntervalTimePrint();
+
     }
     // 「下」が押されたときの処理
     if (localKey == DownKey) {
-      lcdCrearPrint("@RotationTimes--");
-      rotationTimes--;
-      lcdRotationTimesPrint();
+
+      lcdCrearPrint("@RotIntTime-10");
+      rotationIntervalTime = rotationIntervalTime - 10;
+      lcdRotationIntervalTimePrint();
+
     }
     // 「SELECT」が押されたときの処理
     if (localKey == SelectKey)

@@ -1,9 +1,9 @@
 void pwmController(unsigned long settingTime) {
 
-  //関数呼出時の秒数を記録
-  unsigned long firstTime = millis();
-
   if (settingTime > 0) {
+
+    //関数呼出時の秒数を記録
+    unsigned long firstTime = millis();
 
     //関数呼出時の秒数+設定値＞現在の秒数になるまでループ
     for (; firstTime + settingTime > millis();)
