@@ -1,3 +1,17 @@
+/*Keypadの処理をまとめ
+  
+全部で3モード
+
+  1.ActiveMode 任意の周波数を出すことができる。テスト用
+  2.PassiveMode SQ1からのCVとGATEを受け取って打鍵する.デフォはこれ
+  3.ManualMode 正転・反転・交互等の動作テスト用
+  
+  ※正転(normalRotate)はBELL_P_PINがHIGH,BELL_N_PINがLOWのこと、
+  反転(Reverse)は逆.モータードライバを用いてるのでこの変数名にした.
+  もっと良い変数名があれば変えたい
+ 
+  */
+
 void receiveKeypadActiveMode() {
 
   int buttonValue = analogRead(A0); //LCDKeypadのボタン読み込み
@@ -47,7 +61,7 @@ void receiveKeypadPassiveMode() {
     // 「右」が押されたときの処理
     if (localKey == RightKey) {
 
-      lcdCrearPrint("@alternatelyRotation");
+      lcdCrearPrint("@altRotate");
       alternatelyRotation();
 
       //      lcdCrearPrint("@RotationTimes++");

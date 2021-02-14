@@ -1,3 +1,5 @@
+//よく使うLCD関連の処理
+
 void lcdCrearPrint(String msg) 
 {  
   Serial.println(msg);

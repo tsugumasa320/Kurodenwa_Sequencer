@@ -27,6 +27,12 @@ const int RightKey  = 5;
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
 //--------------------
+// 入力用ピン番号設定
+
+const int SQ1_GATE_PIN = 13;
+const int SQ1_CV_PIN = A1;
+const int LCD_KEYPAD_PIN = A0;
+
 // 出力用ピン番号設定
 
 const int BELL_P_PIN = 2;
@@ -48,10 +54,9 @@ bool pwmLimitationCheckFlg = true;
 
 //--------------------
 //SQ1_MODE設定
-int sq1GatePin = 13;
-int sq1CvPin = A1;
+
+int rotatedTimes = 0;
 int rotationTimes = 1;
-int i = 0;
 int rotationIntervalTime = 30;
 bool sq1ModeLimitationCheckFlg = true;
 
@@ -63,9 +68,9 @@ void setup()
 {
   
   //ピン設定
-  pinMode(A0, INPUT);
-  pinMode(sq1CvPin, INPUT);
-  pinMode(sq1GatePin, INPUT_PULLUP);
+  pinMode(LCD_KEYPAD_PIN, INPUT);
+  pinMode(SQ1_CV_PIN, INPUT); //Todo:PULLUPさせる？
+  pinMode(SQ1_GATE_PIN, INPUT_PULLUP);
   pinMode(BELL_N_PIN, OUTPUT);
   pinMode(BELL_P_PIN, OUTPUT);
 
@@ -80,7 +85,7 @@ void loop()
 
   if (modeSwitch == 0) {
     receiveKeypadActiveMode();
-    pwmController(0);
+    pwmController(0); //引数はミリ秒駆動.0でずっとActive
   } else if (modeSwitch == 1) {
     receiveKeypadPassiveMode();
     sq1ModeController();

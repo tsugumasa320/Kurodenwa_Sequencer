@@ -1,3 +1,5 @@
+//PWM関連の処理
+
 void pwmController(unsigned long settingTime) {
 
   if (settingTime > 0) {
@@ -21,7 +23,7 @@ void pwmController(unsigned long settingTime) {
   }
 }
 
-void pwmLimitation() { //ベルが壊れないように周波数を制限
+void pwmLimitation() { //ベルが壊れないように周波数を制限し、OKならフラグを倒す
   //  Serial.println("pwmLimitation");
   if (50 > freq && freq > 0 )
   { //周波数0Hz以下と50Hz以上は出力しない
@@ -34,7 +36,7 @@ void pwmLimitation() { //ベルが壊れないように周波数を制限
   }
 }
 
-void pwmTimingSwitch() //一回打鍵
+void pwmTimingSwitch() //一回打鍵.もっと良い書き方があると思う
 {
   unsigned long currentMillis = millis();
   long interval_P = ONE_SECOND / freq * dutyCycle_P ; // ex:1000(ms)/16(Hz)*0.5  = 31.25(ms/Hz)
@@ -83,7 +85,7 @@ void alternatelyRotation()
   }
 }
 
-void stopRotation()
+void stopRotation() //意味なし.消しても良い
 {
   digitalWrite(BELL_P_PIN, LOW);
   digitalWrite(BELL_N_PIN, LOW);
