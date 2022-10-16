@@ -90,7 +90,6 @@ Korg SQ-1の場合、GATE出力が14Vの信号が来るので、分圧して5V�
 * E-mail tsugumasa320@gmail.com  
 
 # License
-ライセンスを明示する  
 
 "Kurodenwa Sequencer" is under [GNU GENERAL PUBLIC LICENSE]  
  (https://ja.wikipedia.org/wiki/GNU_General_Public_License).  
